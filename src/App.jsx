@@ -3,12 +3,11 @@ import Header from "./components/partials/Header"
 import Footer from "./components/partials/Footer"
 import Note from "./components/Note";
 import Form from "./components/Form";
-import SignIn from "./components/SignIn";
 
 function App() {
 
   return (
-    <div className="">
+    <div className="bg-stone-200 h-screen">
          <Header />
          <Form />
          <Note />

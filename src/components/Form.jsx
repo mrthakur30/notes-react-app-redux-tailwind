@@ -1,8 +1,7 @@
 import React from 'react'
-import AddNote from "../../src/assets/AddNote.svg";
-import { Zoom } from '@mui/material';
 import { useDispatch} from "react-redux";
 import { addNote } from '../features/notes/notesSlice';
+import { motion } from "framer-motion"
 
 function Form() {
    const dispatch = useDispatch();
@@ -23,7 +22,9 @@ function Form() {
     }
 
   function clickHandler(event){
+    
     event.preventDefault();
+    //if(note.title==="" || note.body==="") return ;
     dispatch(addNote(note));
     setNote({
         title : "",
@@ -32,20 +33,33 @@ function Form() {
   }
 
   return (
-    <div id="note" className=" flex  h-1/2 items-center relative  justify-center">
-          <form className="flex  w-3/4 md:w-1/3  shadow-xl  h-1/2 p-3 my-6 flex-col bg-white  content-center rounded-md gap-2  items-center">
+    <div id="note" className=" flex  h-1/3 items-center justify-center">
+         
 
-              <input     onChange={changeHandler} name="title" value={note.title}  onFocus={()=>setShow(true)} type="text"  className=" text-lg  font-bold outline-none border-0  w-full  resize-none focus:border-0  " placeholder="Title"  />
+         <motion.div
+          className='md:w-1/3 w-2/3'
+          whileHover={{ scale: 1.1 }}
+      >
+        <form className="flex p-3 my-3  flex-col bg-white  content-center rounded-sm gap-2  items-center">
+              <input  onChange={changeHandler} name="title" value={note.title}  onFocus={()=>setShow(true)} type="text"  className=" text-lg  py-1 font-semibold border outline-none px-1  w-full  resize-none " placeholder="Title"  />
              {
              show &&
              <>
-             <textarea onChange={changeHandler} name="body"  value={note.body}  rows="4" className="  text-lg  outline-none border-0  w-full  resize-none focus:border-0  " placeholder="Type a note..."></textarea>
-             <button type="submit" onClick={clickHandler} > 
-             <img src={AddNote} className= "h-8 absolute bottom-1 p-1 cursor-pointer hover:bg-white hover:rotate-180 delay-200 duration-200 shadow-2xl bg-gray-50 rounded-full" ></img>
-             </button>
+             <textarea onChange={changeHandler} name="body"  value={note.body}  rows="4" className="  text-lg  outline-none border px-1 w-full  resize-none " placeholder="Type a note..."></textarea>
+             <motion.div
+               whileHover={{ scale: 1.1}}
+             >
+                <button type="submit" className='border px-1 py-1 hover:rounded duration-150 rounded-md' onClick={clickHandler} > 
+                        Add Note
+                </button>
+             </motion.div>
+             
              </>
              }
          </form>
+        </motion.div>
+          
+
     </div>
   )
 }
