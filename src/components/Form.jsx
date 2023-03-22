@@ -24,7 +24,7 @@ function Form() {
   function clickHandler(event){
     
     event.preventDefault();
-    //if(note.title==="" || note.body==="") return ;
+    if(note.title==="" || note.body==="") return ;
     dispatch(addNote(note));
     setNote({
         title : "",
