@@ -36,7 +36,7 @@ function NoteCard(props){
     whileHover={{ scale: 1.1}}
     > 
       
-      <div className="rounded-sm bg-white shadow-md relative p-2  h-32">
+      <div className="rounded-sm bg-white shadow-md relative p-2  min-h-32">
          <div className='h-full w-full p-2 border  rounded-sm '>
          <button onClick={clickHandler} className='top-1 text-xl  text-red-500 duration-150 hover:text-red-700 font-bold absolute right-4'>x</button>
          <p className="font-bold">{title}</p>
